@@ -1,6 +1,15 @@
 int Der = 900;
 int Izq = 900   ;
 
+void Interseccion(){
+  while(sensorRead(J5) > Izq) {
+    turnLeft(M2, M1);
+    delay(50)
+  }
+  while(sensorRead(J5) < Izq){
+  turnLeft(M2, M1)
+  delay(500);
+}
 
 void setup() { 
   Serial.begin(9600);
@@ -35,6 +44,10 @@ void loop() {
   else if (sensorRead(J4) < Der && sensorRead(J5) > Izq) {
       turnLeft(M2 , M1);
   }
+  else if (sensorRead(J4) > Der && sensorRead(J5) > Izq) {
+      Interseccion();
+  }
+
 
 
 }
